@@ -6,10 +6,6 @@ export interface ContentFile {
   frontmatter?: Record<string, any>;
 }
 
-function normalizeLocale(locale: string): 'en' | 'zh' {
-  return locale === 'zh' ? 'zh' : 'en';
-}
-
 /**
  * Read content file based on locale and path
  * @param contentType - Content type (e.g., 'Homepage', 'Arena', 'Framework')
@@ -23,9 +19,8 @@ export async function getContentFile(
   locale: string
 ): Promise<ContentFile | null> {
   try {
-    const safeLocale = normalizeLocale(locale);
     const contentDir = path.join(process.cwd(), 'Content', contentType);
-    const filePath = path.join(contentDir, `${fileName}.${safeLocale}.md`);
+    const filePath = path.join(contentDir, `${fileName}.${locale}.md`);
 
     console.log(`[getContentFile] Looking for: ${filePath}`);
 
@@ -125,6 +120,7 @@ const HOMEPAGE_SECTION_HEADERS: Record<string, Record<string, string>> = {
   'Value Props Section': { en: 'Value Props Section', zh: 'Value Props Section' },
   'Featured Arenas Section': { en: 'Featured Arenas Section', zh: '精选实践区' },
   'Industries Section': { en: 'Industries Section', zh: '行业区' },
+  'Real-World Testing Section': { en: 'Real-World Testing Section', zh: '实战验证区' },
   'Approach Section': { en: 'Approach Section', zh: '方法区' },
   'Trust Section': { en: 'Trust Section', zh: '信任区' },
   'Final CTA Section': { en: 'Final CTA Section', zh: '最终行动区' },
@@ -140,15 +136,14 @@ export async function getHomepageSectionContent(
   section: string,
   locale: string
 ): Promise<ContentFile | null> {
-  const safeLocale = normalizeLocale(locale);
-  const contentFile = await getContentFile('Homepage', 'homepage', safeLocale);
+  const contentFile = await getContentFile('Homepage', 'homepage', locale);
   if (!contentFile) {
-    console.error(`[getHomepageSectionContent] Content file not found for locale=${safeLocale}`);
+    console.error(`[getHomepageSectionContent] Content file not found for locale=${locale}`);
     return null;
   }
 
   const sectionHeader =
-    HOMEPAGE_SECTION_HEADERS[section]?.[safeLocale] ?? section;
+    HOMEPAGE_SECTION_HEADERS[section]?.[locale] ?? section;
 
   // Split by ## headers at the start of a line
   const lines = contentFile.content.split('\n');
@@ -170,7 +165,7 @@ export async function getHomepageSectionContent(
   }
 
   if (sectionStart === -1) {
-    console.error(`[getHomepageSectionContent] Section not found: section="${section}", locale="${safeLocale}", header="${sectionHeader}"`);
+    console.error(`[getHomepageSectionContent] Section not found: section="${section}", locale="${locale}", header="${sectionHeader}"`);
     // Log all ## headers for debugging
     const allHeaders = lines.filter(line => line.startsWith('## ')).map(line => `"${line.substring(3).trim()}"`);
     console.error(`[getHomepageSectionContent] Available headers:`, allHeaders.join(', '));

@@ -36,16 +36,3 @@ next-env.d.ts
 nul
 arena_data.json
 *.xlsx~
-
-# cus add
-.idea/
-.DS_Store
-# .claude/
-node_modules/
-/node_modules/
-*.zip
-/push.sh
-/run_pull.sh
-/run_push.sh
-logs/
-*.log
