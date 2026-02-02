@@ -2,10 +2,15 @@
 
 ## 英雄区
 
+### 徽章
+- **Badge**: 开源
+- **Badge**: 已验证
+- **Badge**: 可复制
+
 ### 主要内容
-- **Title**: AI实战，谁是最佳？ RWAI真实世界AI擂台
-- **Subtitle**: RWAI寻找和验证最好的AI全链路落地实践
-- **Description**: 提供团队构建、系统架构、模型选择、流程与代码，让你不再从零试错
+- **Title**: Build to Ship. Real World AI.
+- **Subtitle**: RWAI汇集了最好的AI全链路落地指南
+- **Description**: 提供完整架构、模型选择、流程与代码，让你不再从零试错
 
 ### 行动按钮
 - **Primary**: 浏览最佳AI实践
@@ -19,15 +24,15 @@
 
 ### Value Prop 2
 - **Title**: 实战验证
-- **Description**: 经头部企业高频场景验证
+- **Description**: 经头部企业高频场景验证。
 
 ### Value Prop 3
 - **Title**: 完全开源
-- **Description**: 架构透明，代码可控，无供应商锁定风险
+- **Description**: 架构透明，代码可控，无供应商锁定风险。
 
 ### Value Prop 4
 - **Title**: 全程指引
-- **Description**: 从团队搭建到私有化部署的完整落地路径
+- **Description**: 从团队搭建到私有化部署的完整落地路径。
 
 ## 精选实践区
 

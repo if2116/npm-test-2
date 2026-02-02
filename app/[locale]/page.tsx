@@ -6,17 +6,9 @@ import Link from 'next/link';
 import { getHomepageSectionContent, parseHomepageSectionContent } from '@/lib/content';
 import { Suspense, Fragment } from 'react';
 import Image from 'next/image';
-import { withBasePath } from '@/lib/paths';
 import { ParticlesBackground } from '@/components/effects/particles-background';
 import { ParticleNebulaBackground } from '@/components/effects/particle-nebula-background';
 import { FeaturedArenasShowcase, FeaturedArenasShowcaseSkeleton } from '@/components/featured-arenas-showcase';
-
-// Force static generation
-export const dynamic = 'force-static';
-
-export function generateStaticParams() {
-  return [{ locale: 'en' }, { locale: 'zh' }];
-}
 
 // Helper function to get localized labels (fallback to content files for consistency)
 function getLabel(locale: string, key: string): string {
@@ -456,12 +448,12 @@ async function ValuePropSection({ locale }: { locale: string }) {
  */
 async function PartnersCarouselSection({ locale }: { locale: string }) {
   const partners = [
-    { id: '1', name: 'Partner 1', logo: withBasePath('/partners/logo1.png') },
-    { id: '2', name: 'Partner 2', logo: withBasePath('/partners/logo2.png') },
-    { id: '3', name: 'Partner 3', logo: withBasePath('/partners/logo3.png') },
-    { id: '4', name: 'Partner 4', logo: withBasePath('/partners/logo4.png') },
-    { id: '5', name: 'Partner 5', logo: withBasePath('/partners/logo5.png') },
-    { id: '6', name: 'Partner 6', logo: withBasePath('/partners/logo6.png') },
+    { id: '1', name: 'Partner 1', logo: '/partners/logo1.png' },
+    { id: '2', name: 'Partner 2', logo: '/partners/logo2.png' },
+    { id: '3', name: 'Partner 3', logo: '/partners/logo3.png' },
+    { id: '4', name: 'Partner 4', logo: '/partners/logo4.png' },
+    { id: '5', name: 'Partner 5', logo: '/partners/logo5.png' },
+    { id: '6', name: 'Partner 6', logo: '/partners/logo6.png' },
   ];
 
   return (
@@ -886,7 +878,7 @@ async function FinalCtaSection({ locale }: { locale: string }) {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
           <Button size="large" variant="primary" className="bg-white text-primary hover:bg-bg-secondary" asChild>
-            <Link href={`/${locale}/arena`}>{primaryButton}</Link>
+            <Link href="/arena">{primaryButton}</Link>
           </Button>
           <Button size="large" variant="secondary" className="border-white text-white hover:bg-white/10" asChild>
             <a href="https://github.com/THU-ZJAI/Real-World-AI" target="_blank" rel="noopener noreferrer">

@@ -1,12 +1,7 @@
 import { getContentFile } from '@/lib/content';
 import ArenaClient from './arena-client';
 
-// Force static generation
-export const dynamic = 'force-static';
-
-export function generateStaticParams() {
-  return [{ locale: 'en' }, { locale: 'zh' }];
-}
+export const dynamic = 'force-dynamic';
 
 interface ArenaPageProps {
   params: Promise<{ locale: string }>;
@@ -24,5 +19,5 @@ export default async function ArenaPage({ params }: ArenaPageProps) {
   const pageSubtitle = contentFile?.frontmatter?.pageSubtitle ||
     (locale === 'zh' ? '为你的业务任务，定义唯一最优实践' : 'Define the Best Practice for Your Business Tasks');
 
-  return <ArenaClient locale={locale} pageTitle={pageTitle} pageSubtitle={pageSubtitle} />;
+  return <ArenaClient params={params} pageTitle={pageTitle} pageSubtitle={pageSubtitle} />;
 }

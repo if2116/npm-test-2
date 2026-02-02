@@ -2,10 +2,15 @@
 
 ## Hero Section
 
+### Badges
+- **Badge**: Open Source
+- **Badge**: Verified
+- **Badge**: Replicable
+
 ### Main Content
-- **Title**: Find the ONE Best AI Practice. Real World AI Arena
-- **Subtitle**: RWAI finds the best end-to-end, production-ready AI implementations
-- **Description**: Including team setup, system architecture, model choices, workflows, and code — so you never have to start from scratch.
+- **Title**: Build to Ship. Real World AI.
+- **Subtitle**: RWAI provides end-to-end, production-ready AI implementations
+- **Description**: Including system architecture, model choices, team setup, workflows, and code — so you never have to start from scratch.
 
 ### CTA Buttons
 - **Primary**: Browse Best AI Practices
@@ -15,7 +20,7 @@
 
 ### Value Prop 1
 - **Title**: Rapid Deployment
-- **Description**: Deliver enterprise level solution in 2-7 days.
+- **Description**: Deliver enterprise level solution in 2-7 days
 
 ### Value Prop 2
 - **Title**: Real-World Tested
@@ -27,7 +32,7 @@
 
 ### Value Prop 4
 - **Title**: End-to-End Guidance
-- **Description**: Complete implementation path from team setup to private deployment.
+- **Description**: Complete implementation path from team building to private deployment.
 
 ## Featured Arenas Section
 

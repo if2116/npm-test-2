@@ -1,9 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { use } from 'react';
 import { useTranslations } from 'next-intl';
 import { useState, useMemo } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { arenas, categories, industries } from '@/lib/data';
@@ -171,13 +171,13 @@ function truncateText(text: string, maxLength: number): string {
 }
 
 interface ArenaClientProps {
-  locale: string;
+  params: Promise<{ locale: string }>;
   pageTitle: string;
   pageSubtitle: string;
 }
 
-export default function ArenaClient({ locale, pageTitle, pageSubtitle }: ArenaClientProps) {
-  const router = useRouter();
+export default function ArenaClient({ params, pageTitle, pageSubtitle }: ArenaClientProps) {
+  const { locale } = use(params);
   const searchParams = useSearchParams();
   const t = useTranslations('arena');
   const isChina = locale === 'zh';
@@ -679,7 +679,7 @@ export default function ArenaClient({ locale, pageTitle, pageSubtitle }: ArenaCl
                                 onClick={(e) => {
                                   e.preventDefault();
                                   e.stopPropagation();
-                                  router.push(`/${locale}/contact`);
+                                  window.location.href = `/${locale}/contact`;
                                 }}
                                 className="flex items-center gap-1.5 text-sm font-semibold text-blue-600 hover:text-blue-700 transition-all duration-200"
                               >
