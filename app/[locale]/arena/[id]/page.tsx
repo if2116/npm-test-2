@@ -3,6 +3,9 @@ import { getArenaById, getArenaByFolderId, arenas } from '@/lib/data';
 import { ArenaDetailClient } from './client-page';
 import { getArenaContent } from '@/lib/content';
 
+// Force static generation for this page
+export const dynamic = 'force-static';
+
 // Disable dynamic params - only pre-generated pages will be accessible
 export const dynamicParams = false;
 

@@ -1,11 +1,12 @@
 import { getContentFile } from '@/lib/content';
 import ArenaClient from './arena-client';
 
+// Force static generation
+export const dynamic = 'force-static';
+
 export function generateStaticParams() {
   return [{ locale: 'en' }, { locale: 'zh' }];
 }
-
-export const dynamic = 'force-dynamic';
 
 interface ArenaPageProps {
   params: Promise<{ locale: string }>;

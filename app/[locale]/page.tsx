@@ -10,6 +10,9 @@ import { ParticlesBackground } from '@/components/effects/particles-background';
 import { ParticleNebulaBackground } from '@/components/effects/particle-nebula-background';
 import { FeaturedArenasShowcase, FeaturedArenasShowcaseSkeleton } from '@/components/featured-arenas-showcase';
 
+// Force static generation
+export const dynamic = 'force-static';
+
 export function generateStaticParams() {
   return [{ locale: 'en' }, { locale: 'zh' }];
 }

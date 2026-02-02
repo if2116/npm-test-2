@@ -6,11 +6,12 @@ import Link from 'next/link';
 import { getContentFile } from '@/lib/content';
 import { notFound } from 'next/navigation';
 
+// Force static generation
+export const dynamic = 'force-static';
+
 export function generateStaticParams() {
   return [{ locale: 'en' }, { locale: 'zh' }];
 }
-
-export const dynamic = 'force-dynamic';
 
 interface FAQItem {
   q: string;
