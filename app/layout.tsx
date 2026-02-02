@@ -28,15 +28,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  params,
 }: {
   children: React.ReactNode;
-  params?: { locale?: string };
 }) {
-  const locale = params?.locale ?? 'en';
-
   return (
-    <html lang={locale}>
+    <html lang="en">
       <body className={`${manrope.variable} ${notoSansSC.variable} ${ibmPlexMono.variable}`}>
         {children}
       </body>
