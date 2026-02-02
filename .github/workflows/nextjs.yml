@@ -80,6 +80,7 @@ jobs:
       - name: Build with Next.js
         env:
           NEXT_TELEMETRY_DISABLED: "1"
+          NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
         run: ${{ steps.detect-pm.outputs.run }} next build
 
       # GitHub Pages 默认会走 Jekyll；静态导出通常建议禁用

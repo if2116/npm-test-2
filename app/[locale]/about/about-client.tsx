@@ -2,6 +2,7 @@
 
 import { Mail } from 'lucide-react';
 import Image from 'next/image';
+import { withBasePath } from '@/lib/paths';
 
 interface AboutClientProps {
   locale: string;
@@ -11,12 +12,12 @@ export default function AboutClient({ locale }: AboutClientProps) {
   const isChina = locale === 'zh';
 
   const partners = [
-    { name: 'Tsinghua University', nameZh: '清华大学', logo: '/partners/logo1.png' },
-    { name: 'Microsoft', nameZh: '微软', logo: '/partners/logo2.png' },
-    { name: 'Columbia University', nameZh: '哥伦比亚大学', logo: '/partners/logo3.png' },
-    { name: 'Oxford University', nameZh: '牛津大学', logo: '/partners/logo4.png' },
-    { name: 'CFA Institute', nameZh: 'CFA协会', logo: '/partners/logo5.png' },
-    { name: 'Yangtze Delta Region Institute', nameZh: '浙江清华长三角研究院', logo: '/partners/logo6.png' },
+    { name: 'Tsinghua University', nameZh: '清华大学', logo: withBasePath('/partners/logo1.png') },
+    { name: 'Microsoft', nameZh: '微软', logo: withBasePath('/partners/logo2.png') },
+    { name: 'Columbia University', nameZh: '哥伦比亚大学', logo: withBasePath('/partners/logo3.png') },
+    { name: 'Oxford University', nameZh: '牛津大学', logo: withBasePath('/partners/logo4.png') },
+    { name: 'CFA Institute', nameZh: 'CFA协会', logo: withBasePath('/partners/logo5.png') },
+    { name: 'Yangtze Delta Region Institute', nameZh: '浙江清华长三角研究院', logo: withBasePath('/partners/logo6.png') },
   ];
 
   return (
