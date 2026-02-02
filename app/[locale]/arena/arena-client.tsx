@@ -3,7 +3,7 @@
 import React from 'react';
 import { useTranslations } from 'next-intl';
 import { useState, useMemo } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { arenas, categories, industries } from '@/lib/data';
@@ -177,6 +177,7 @@ interface ArenaClientProps {
 }
 
 export default function ArenaClient({ locale, pageTitle, pageSubtitle }: ArenaClientProps) {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const t = useTranslations('arena');
   const isChina = locale === 'zh';
@@ -678,7 +679,7 @@ export default function ArenaClient({ locale, pageTitle, pageSubtitle }: ArenaCl
                                 onClick={(e) => {
                                   e.preventDefault();
                                   e.stopPropagation();
-                                  window.location.href = `/${locale}/contact`;
+                                  router.push(`/${locale}/contact`);
                                 }}
                                 className="flex items-center gap-1.5 text-sm font-semibold text-blue-600 hover:text-blue-700 transition-all duration-200"
                               >

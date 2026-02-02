@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export const dynamic = 'force-static';
 
 export default function IndexPage() {
@@ -7,17 +9,18 @@ export default function IndexPage() {
         <h1 className="text-2xl font-semibold mb-4">Redirecting…</h1>
         <p className="text-white/70 mb-6">Taking you to the English site.</p>
         <noscript>
-          <a
+          <Link
             href="/en/"
             className="px-6 py-3 rounded-lg bg-[#3B82F6] hover:bg-blue-600 transition-colors inline-block"
           >
             Continue to English
-          </a>
+          </Link>
         </noscript>
       </div>
       <script
         dangerouslySetInnerHTML={{
-          __html: "window.location.replace('/en/');",
+          __html:
+            "var base=window.location.pathname.replace(/\\/?$/, '');window.location.replace((base ? base : '') + '/en/');",
         }}
       />
     </main>
