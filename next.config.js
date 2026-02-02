@@ -1,18 +1,17 @@
 const createNextIntlPlugin = require('next-intl/plugin');
-
 const withNextIntl = createNextIntlPlugin();
 
-/** @type {import('next').NextConfig} */
+const repo = process.env.GITHUB_REPOSITORY?.split('/')[1] ?? 'npm-test-2';
+const isGhPages = process.env.GITHUB_ACTIONS === 'true';
+
 const nextConfig = {
+  output: 'export',
+  trailingSlash: true,
+
+  basePath: isGhPages ? `/${repo}` : '',
+
   images: {
-    // Allow local images from /public directory
-    unoptimized: false,
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**',
-      },
-    ],
+    unoptimized: true,
   },
 };
 
