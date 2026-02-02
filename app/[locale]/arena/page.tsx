@@ -9,11 +9,11 @@ export function generateStaticParams() {
 }
 
 interface ArenaPageProps {
-  params: Promise<{ locale: string }>;
+  params: { locale: string };
 }
 
 export default async function ArenaPage({ params }: ArenaPageProps) {
-  const { locale } = await params;
+  const { locale } = params;
 
   // Read page content with frontmatter
   const contentFile = await getContentFile('Arena', 'page', locale);
@@ -24,5 +24,5 @@ export default async function ArenaPage({ params }: ArenaPageProps) {
   const pageSubtitle = contentFile?.frontmatter?.pageSubtitle ||
     (locale === 'zh' ? '为你的业务任务，定义唯一最优实践' : 'Define the Best Practice for Your Business Tasks');
 
-  return <ArenaClient params={params} pageTitle={pageTitle} pageSubtitle={pageSubtitle} />;
+  return <ArenaClient locale={locale} pageTitle={pageTitle} pageSubtitle={pageSubtitle} />;
 }

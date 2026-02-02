@@ -26,9 +26,9 @@ export async function generateStaticParams() {
 export default async function ArenaDetailPage({
   params,
 }: {
-  params: Promise<{ locale: string; id: string }>;
+  params: { locale: string; id: string };
 }) {
-  const { locale, id } = await params;
+  const { locale, id } = params;
 
   // Try to find arena by id first (for backward compatibility), then by folderId
   let arena = getArenaById(id);

@@ -31,9 +31,9 @@ function getLabel(locale: string, key: string): string {
 export default async function HomePage({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: { locale: string };
 }) {
-  const { locale } = await params;
+  const { locale } = params;
 
   return (
     <div className="w-full">

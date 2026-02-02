@@ -1,6 +1,6 @@
 'use client';
 
-import React, { use } from 'react';
+import React from 'react';
 import { useTranslations } from 'next-intl';
 import { useState, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
@@ -171,13 +171,12 @@ function truncateText(text: string, maxLength: number): string {
 }
 
 interface ArenaClientProps {
-  params: Promise<{ locale: string }>;
+  locale: string;
   pageTitle: string;
   pageSubtitle: string;
 }
 
-export default function ArenaClient({ params, pageTitle, pageSubtitle }: ArenaClientProps) {
-  const { locale } = use(params);
+export default function ArenaClient({ locale, pageTitle, pageSubtitle }: ArenaClientProps) {
   const searchParams = useSearchParams();
   const t = useTranslations('arena');
   const isChina = locale === 'zh';

@@ -6,6 +6,10 @@ export interface ContentFile {
   frontmatter?: Record<string, any>;
 }
 
+function normalizeLocale(locale: string): 'en' | 'zh' {
+  return locale === 'zh' ? 'zh' : 'en';
+}
+
 /**
  * Read content file based on locale and path
  * @param contentType - Content type (e.g., 'Homepage', 'Arena', 'Framework')
@@ -19,8 +23,9 @@ export async function getContentFile(
   locale: string
 ): Promise<ContentFile | null> {
   try {
+    const safeLocale = normalizeLocale(locale);
     const contentDir = path.join(process.cwd(), 'Content', contentType);
-    const filePath = path.join(contentDir, `${fileName}.${locale}.md`);
+    const filePath = path.join(contentDir, `${fileName}.${safeLocale}.md`);
 
     console.log(`[getContentFile] Looking for: ${filePath}`);
 
@@ -135,14 +140,15 @@ export async function getHomepageSectionContent(
   section: string,
   locale: string
 ): Promise<ContentFile | null> {
-  const contentFile = await getContentFile('Homepage', 'homepage', locale);
+  const safeLocale = normalizeLocale(locale);
+  const contentFile = await getContentFile('Homepage', 'homepage', safeLocale);
   if (!contentFile) {
-    console.error(`[getHomepageSectionContent] Content file not found for locale=${locale}`);
+    console.error(`[getHomepageSectionContent] Content file not found for locale=${safeLocale}`);
     return null;
   }
 
   const sectionHeader =
-    HOMEPAGE_SECTION_HEADERS[section]?.[locale] ?? section;
+    HOMEPAGE_SECTION_HEADERS[section]?.[safeLocale] ?? section;
 
   // Split by ## headers at the start of a line
   const lines = contentFile.content.split('\n');
@@ -164,7 +170,7 @@ export async function getHomepageSectionContent(
   }
 
   if (sectionStart === -1) {
-    console.error(`[getHomepageSectionContent] Section not found: section="${section}", locale="${locale}", header="${sectionHeader}"`);
+    console.error(`[getHomepageSectionContent] Section not found: section="${section}", locale="${safeLocale}", header="${sectionHeader}"`);
     // Log all ## headers for debugging
     const allHeaders = lines.filter(line => line.startsWith('## ')).map(line => `"${line.substring(3).trim()}"`);
     console.error(`[getHomepageSectionContent] Available headers:`, allHeaders.join(', '));
