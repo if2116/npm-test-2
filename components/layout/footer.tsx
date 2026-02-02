@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl';
 import { Github } from 'lucide-react';
 
-export function Footer() {
+export function Footer({ locale }: { locale: string }) {
   const t = useTranslations('footer');
 
   return (
@@ -21,17 +21,17 @@ export function Footer() {
             <h4 className="text-sm font-semibold text-text-primary mb-4">{t('platform')}</h4>
             <ul className="space-y-2">
               <li>
-                <a href="/arena" className="text-sm text-text-secondary hover:text-primary transition-colors">
+                <a href={`/${locale}/arena`} className="text-sm text-text-secondary hover:text-primary transition-colors">
                   {t('arena')}
                 </a>
               </li>
               <li>
-                <a href="/framework" className="text-sm text-text-secondary hover:text-primary transition-colors">
+                <a href={`/${locale}/framework`} className="text-sm text-text-secondary hover:text-primary transition-colors">
                   {t('framework')}
                 </a>
               </li>
               <li>
-                <a href="/faq" className="text-sm text-text-secondary hover:text-primary transition-colors">
+                <a href={`/${locale}/faq`} className="text-sm text-text-secondary hover:text-primary transition-colors">
                   {t('faq')}
                 </a>
               </li>
@@ -52,7 +52,7 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="/about" className="text-sm text-text-secondary hover:text-primary transition-colors">
+                <a href={`/${locale}/about`} className="text-sm text-text-secondary hover:text-primary transition-colors">
                   {t('about')}
                 </a>
               </li>
@@ -71,12 +71,12 @@ export function Footer() {
             <h4 className="text-sm font-semibold text-text-primary mb-4">{t('legal')}</h4>
             <ul className="space-y-2">
               <li>
-                <a href="/privacy" className="text-sm text-text-secondary hover:text-primary transition-colors">
+                <a href={`/${locale}/privacy`} className="text-sm text-text-secondary hover:text-primary transition-colors">
                   {t('privacy')}
                 </a>
               </li>
               <li>
-                <a href="/terms" className="text-sm text-text-secondary hover:text-primary transition-colors">
+                <a href={`/${locale}/terms`} className="text-sm text-text-secondary hover:text-primary transition-colors">
                   {t('terms')}
                 </a>
               </li>
