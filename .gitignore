@@ -47,3 +47,5 @@ node_modules/
 /push.sh
 /run_pull.sh
 /run_push.sh
+logs/
+*.log
