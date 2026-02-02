@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { getHomepageSectionContent, parseHomepageSectionContent } from '@/lib/content';
 import { Suspense, Fragment } from 'react';
 import Image from 'next/image';
-import { withBasePath } from '@/lib/paths';
 import { ParticlesBackground } from '@/components/effects/particles-background';
 import { ParticleNebulaBackground } from '@/components/effects/particle-nebula-background';
 import { FeaturedArenasShowcase, FeaturedArenasShowcaseSkeleton } from '@/components/featured-arenas-showcase';
@@ -456,12 +455,12 @@ async function ValuePropSection({ locale }: { locale: string }) {
  */
 async function PartnersCarouselSection({ locale }: { locale: string }) {
   const partners = [
-    { id: '1', name: 'Partner 1', logo: withBasePath('/partners/logo1.png') },
-    { id: '2', name: 'Partner 2', logo: withBasePath('/partners/logo2.png') },
-    { id: '3', name: 'Partner 3', logo: withBasePath('/partners/logo3.png') },
-    { id: '4', name: 'Partner 4', logo: withBasePath('/partners/logo4.png') },
-    { id: '5', name: 'Partner 5', logo: withBasePath('/partners/logo5.png') },
-    { id: '6', name: 'Partner 6', logo: withBasePath('/partners/logo6.png') },
+    { id: '1', name: 'Partner 1', logo: '/partners/logo1.png' },
+    { id: '2', name: 'Partner 2', logo: '/partners/logo2.png' },
+    { id: '3', name: 'Partner 3', logo: '/partners/logo3.png' },
+    { id: '4', name: 'Partner 4', logo: '/partners/logo4.png' },
+    { id: '5', name: 'Partner 5', logo: '/partners/logo5.png' },
+    { id: '6', name: 'Partner 6', logo: '/partners/logo6.png' },
   ];
 
   return (
