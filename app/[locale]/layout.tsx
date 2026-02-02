@@ -30,6 +30,10 @@ export const metadata: Metadata = {
   description: 'Find the best AI solutions for your real-world business scenarios. Verified, open-source, production-ready.',
 };
 
+export function generateStaticParams() {
+  return [{ locale: 'en' }, { locale: 'zh' }];
+}
+
 export default async function LocaleLayout({
   children,
   params,
