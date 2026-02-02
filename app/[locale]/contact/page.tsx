@@ -8,10 +8,10 @@ export function generateStaticParams() {
 }
 
 interface ContactPageProps {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
 export default async function ContactPage({ params }: ContactPageProps) {
-  const { locale } = params;
+  const { locale } = await params;
   return <ContactClient locale={locale} />;
 }

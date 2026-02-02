@@ -9,11 +9,11 @@ export function generateStaticParams() {
 }
 
 interface ArenaPageProps {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
 export default async function ArenaPage({ params }: ArenaPageProps) {
-  const { locale } = params;
+  const { locale } = await params;
 
   // Read page content with frontmatter
   const contentFile = await getContentFile('Arena', 'page', locale);

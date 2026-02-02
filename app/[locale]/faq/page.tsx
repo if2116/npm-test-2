@@ -114,9 +114,9 @@ function parseFAQContent(markdown: string): FAQCategory[] {
 export default async function FAQPage({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  const { locale } = params;
+  const { locale } = await params;
   const isChina = locale === 'zh';
 
   // Load FAQ content from file

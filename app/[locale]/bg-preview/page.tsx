@@ -8,10 +8,10 @@ export function generateStaticParams() {
 }
 
 interface BackgroundPreviewPageProps {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
 export default async function BackgroundPreviewPage({ params }: BackgroundPreviewPageProps) {
-  const { locale } = params;
+  const { locale } = await params;
   return <BackgroundPreviewClient locale={locale} />;
 }

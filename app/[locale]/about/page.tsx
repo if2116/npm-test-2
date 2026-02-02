@@ -8,10 +8,10 @@ export function generateStaticParams() {
 }
 
 interface AboutPageProps {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
 export default async function AboutPage({ params }: AboutPageProps) {
-  const { locale } = params;
+  const { locale } = await params;
   return <AboutClient locale={locale} />;
 }

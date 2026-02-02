@@ -8,10 +8,10 @@ export function generateStaticParams() {
 }
 
 interface FrameworkPageProps {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
 export default async function FrameworkPage({ params }: FrameworkPageProps) {
-  const { locale } = params;
+  const { locale } = await params;
   return <FrameworkClient locale={locale} />;
 }
