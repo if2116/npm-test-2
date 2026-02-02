@@ -1,7 +1,27 @@
 import { notFound } from 'next/navigation';
-import { getArenaById, getArenaByFolderId } from '@/lib/data';
+import { getArenaById, getArenaByFolderId, arenas } from '@/lib/data';
 import { ArenaDetailClient } from './client-page';
 import { getArenaContent } from '@/lib/content';
+
+// Force static generation for this page
+export const dynamic = 'force-static';
+
+// Disable dynamic params - only pre-generated pages will be accessible
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  const locales = ['en', 'zh'];
+
+  // Generate params for both id and folderId (since the page supports both)
+  const params = locales.flatMap((locale) =>
+    arenas.map((arena) => ({
+      locale,
+      id: arena.folderId, // Use folderId as the primary route param
+    }))
+  );
+
+  return params;
+}
 
 export default async function ArenaDetailPage({
   params,

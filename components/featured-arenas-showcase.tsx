@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Arena } from '@/lib/types';
 import { industries } from '@/lib/data';
+import { withBasePath } from '@/lib/paths';
 
 interface FeaturedArenasShowcaseProps {
   arenas: Arena[];
@@ -153,7 +154,7 @@ export function FeaturedArenasShowcase({ arenas, locale, title, subtitle }: Feat
                 playsInline
               >
                 <source
-                  src={`/videos/${selectedArena.folderId}.mp4`}
+                  src={withBasePath(`/videos/${selectedArena.folderId}.mp4`)}
                   type="video/mp4"
                 />
                 Your browser does not support the video tag.
