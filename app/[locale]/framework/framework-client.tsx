@@ -1,17 +1,29 @@
-import FrameworkClient from './framework-client';
+'use client';
 
-export function generateStaticParams() {
-  return [{ locale: 'en' }, { locale: 'zh' }];
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import {
+  Target,
+  Users,
+  GitFork,
+  TrendingUp,
+  CheckCircle2,
+  Zap,
+  Shield,
+  DollarSign,
+  Award,
+  ArrowRight,
+  BarChart3,
+} from 'lucide-react';
+
+interface FrameworkClientProps {
+  locale: string;
 }
 
-interface FrameworkPageProps {
-  params: Promise<{ locale: string }>;
-}
-
-export default async function FrameworkPage({ params }: FrameworkPageProps) {
-  const { locale } = await params;
-  return <FrameworkClient locale={locale} />;
-}
+export default function FrameworkClient({ locale }: FrameworkClientProps) {
+  const isChina = locale === 'zh';
 
   const philosophyItems = [
     {

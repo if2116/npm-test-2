@@ -1,17 +1,14 @@
-import ContactClient from './contact-client';
+'use client';
 
-export function generateStaticParams() {
-  return [{ locale: 'en' }, { locale: 'zh' }];
+import { useState } from 'react';
+import { Mail, MessageSquare, Send, CheckCircle } from 'lucide-react';
+
+interface ContactClientProps {
+  locale: string;
 }
 
-interface ContactPageProps {
-  params: Promise<{ locale: string }>;
-}
-
-export default async function ContactPage({ params }: ContactPageProps) {
-  const { locale } = await params;
-  return <ContactClient locale={locale} />;
-}
+export default function ContactClient({ locale }: ContactClientProps) {
+  const isChina = locale === 'zh';
 
   const [formData, setFormData] = useState({
     name: '',

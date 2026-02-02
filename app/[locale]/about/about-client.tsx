@@ -1,17 +1,14 @@
-import AboutClient from './about-client';
+'use client';
 
-export function generateStaticParams() {
-  return [{ locale: 'en' }, { locale: 'zh' }];
+import { Mail } from 'lucide-react';
+import Image from 'next/image';
+
+interface AboutClientProps {
+  locale: string;
 }
 
-interface AboutPageProps {
-  params: Promise<{ locale: string }>;
-}
-
-export default async function AboutPage({ params }: AboutPageProps) {
-  const { locale } = await params;
-  return <AboutClient locale={locale} />;
-}
+export default function AboutClient({ locale }: AboutClientProps) {
+  const isChina = locale === 'zh';
 
   const partners = [
     { name: 'Tsinghua University', nameZh: '清华大学', logo: '/partners/logo1.png' },

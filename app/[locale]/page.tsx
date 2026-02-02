@@ -10,6 +10,10 @@ import { ParticlesBackground } from '@/components/effects/particles-background';
 import { ParticleNebulaBackground } from '@/components/effects/particle-nebula-background';
 import { FeaturedArenasShowcase, FeaturedArenasShowcaseSkeleton } from '@/components/featured-arenas-showcase';
 
+export function generateStaticParams() {
+  return [{ locale: 'en' }, { locale: 'zh' }];
+}
+
 // Helper function to get localized labels (fallback to content files for consistency)
 function getLabel(locale: string, key: string): string {
   const labels: Record<string, Record<string, string>> = {

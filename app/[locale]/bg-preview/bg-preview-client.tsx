@@ -1,17 +1,13 @@
-import BackgroundPreviewClient from './bg-preview-client';
+'use client';
 
-export function generateStaticParams() {
-  return [{ locale: 'en' }, { locale: 'zh' }];
+import { useState } from 'react';
+import { HeroBackgroundCanvas } from '@/components/effects/hero-background-canvas';
+
+interface BackgroundPreviewClientProps {
+  locale: string;
 }
 
-interface BackgroundPreviewPageProps {
-  params: Promise<{ locale: string }>;
-}
-
-export default async function BackgroundPreviewPage({ params }: BackgroundPreviewPageProps) {
-  const { locale } = await params;
-  return <BackgroundPreviewClient locale={locale} />;
-}
+export default function BackgroundPreviewClient({ locale }: BackgroundPreviewClientProps) {
   const [selectedEffect, setSelectedEffect] = useState<string>('HERO');
 
   return (
