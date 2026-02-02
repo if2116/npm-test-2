@@ -6,7 +6,12 @@ import Link from 'next/link';
 import { getContentFile } from '@/lib/content';
 import { notFound } from 'next/navigation';
 
-export const dynamic = 'force-dynamic';
+// Force static generation
+export const dynamic = 'force-static';
+
+export function generateStaticParams() {
+  return [{ locale: 'en' }, { locale: 'zh' }];
+}
 
 interface FAQItem {
   q: string;
@@ -201,7 +206,7 @@ export default async function FAQPage({
               GitHub
             </Link>
             <Link
-              href={`/${locale}/about`}
+              href={`/${locale}/contact`}
               className="inline-flex items-center justify-center gap-2 h-11 px-6 text-base font-medium transition-all duration-fast bg-blue-600 hover:bg-blue-700 text-white rounded-button"
             >
               {isChina ? '联系我们' : 'Contact Us'}

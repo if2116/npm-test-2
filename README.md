@@ -1,6 +1,4 @@
-# RWAI Arena - Real-World AI Best Practices Platform
-
-一个展示AI最佳实践的开源平台，通过"擂台"机制验证和推荐真实场景下的AI解决方案。
+# test only
 
 ## 技术栈
 
@@ -66,10 +64,3 @@ npm start
 - ✅ SEO友好
 - ✅ 类型安全
 
-## 贡献
-
-欢迎提交 Issue 和 Pull Request！
-
-## 许可证
-
-MIT

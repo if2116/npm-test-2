@@ -1,7 +1,27 @@
 import { notFound } from 'next/navigation';
-import { getArenaById, getArenaByFolderId } from '@/lib/data';
+import { getArenaById, getArenaByFolderId, arenas } from '@/lib/data';
 import { ArenaDetailClient } from './client-page';
 import { getArenaContent } from '@/lib/content';
+
+// Force static generation for this page
+export const dynamic = 'force-static';
+
+// Disable dynamic params - only pre-generated pages will be accessible
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  const locales = ['en', 'zh'];
+
+  // Generate params for both id and folderId (since the page supports both)
+  const params = locales.flatMap((locale) =>
+    arenas.map((arena) => ({
+      locale,
+      id: arena.folderId, // Use folderId as the primary route param
+    }))
+  );
+
+  return params;
+}
 
 export default async function ArenaDetailPage({
   params,
@@ -21,17 +41,15 @@ export default async function ArenaDetailPage({
   }
 
   // Load all content server-side
-  const tabs = ['overview', 'implementation', 'tech-configuration', 'requirements', 'validation-report', 'project-report'] as const;
+  const tabs = ['overview', 'implementation', 'requirements', 'validation-report', 'project-report'] as const;
   const content: Record<string, string> = {};
-  let hasContent = arena.hasContent || false;
+  let hasContent = false;
 
-  // Only load content files if hasContent is true
-  if (hasContent) {
-    for (const tab of tabs) {
-      const result = await getArenaContent(id, tab, locale);
-      if (result) {
-        content[tab] = result.content;
-      }
+  for (const tab of tabs) {
+    const result = await getArenaContent(id, tab, locale);
+    if (result) {
+      content[tab] = result.content;
+      hasContent = true;
     }
   }
 

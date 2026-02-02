@@ -36,7 +36,7 @@
 
 **Heading**: Contact us
 **Chinese**: 联系我们
-**Email**: xuyuyao@tsinghua-zj.edu.cn
+**Email**: contactmx@163.com
 
 ---
 
